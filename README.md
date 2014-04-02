@@ -1,7 +1,9 @@
 Tugas-Sister-2-versi-2
 ======================
-clien server Rmi menggunakan java untuk mendapat informasi cuaca melalui xml 
+Dengan RMI, client memanggil remote method di server yang membuat server melakukan download file xml ke data.bmkg.go.id lalu ditampilkan di client.
 
 ======================
 UPDATE
-Parsing sudah bisa semua, tapi yang direturn ke client masih 1 value.
+Perubahan pada struktur projek (dijadikan satu projek)
+ImplementasiCuaca yang lama dijadikan komen
+Baru 2 file xml yang di print
