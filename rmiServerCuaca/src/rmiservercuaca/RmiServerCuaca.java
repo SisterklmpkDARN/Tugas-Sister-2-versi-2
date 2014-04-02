@@ -18,7 +18,7 @@ public class RmiServerCuaca {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws RemoteException,NotBoundException {
+    public static void main(String[] args) throws RemoteException, NotBoundException {
         // TODO code application logic here
         int i=1;
         Registry registry = LocateRegistry.createRegistry(1099);

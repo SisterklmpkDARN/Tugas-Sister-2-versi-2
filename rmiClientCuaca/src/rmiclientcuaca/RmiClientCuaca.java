@@ -21,14 +21,15 @@ public class RmiClientCuaca {
     /**
      * @param args the command line arguments
      */
-      static String inputan;
+    static String inputan;
     static int pil=0;
 
-    static String inputan(){
+    static String inputan() {
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
-        try{
+        try {
             inputan = dataIn.readLine();
-        }catch(IOException e){
+        }
+        catch(IOException e) {
             System.out.println(e.getMessage());
         }
         return inputan;
@@ -41,44 +42,52 @@ public class RmiClientCuaca {
          String url="";
          CuacaInterfaces cInterface = (CuacaInterfaces) Naming.lookup("rmi://localhost:1099/rmi");
          System.out.println("Client berhasil terkoneksi");
-          do{
-     System.out.println("<<<Menu>>");
-     System.out.println("1. Cek cuaca Dunia");
-     System.out.println("2. Cek cuaca Indonesia");
-     System.out.println("3. Cek cuaca Jabodetabek");
-     System.out.println("4. Cek cuaca Harian");
-     System.out.println("5. Cek cuaca Wisata");
-     System.out.println("6. Exit");
-     System.out.print("Masukan pilihan anda: ");
-     String pilihan = inputan();
-      pil = Integer.parseInt(pilihan);
-    
-     switch(pil){
-         case 1: url="http://data.bmkg.go.id/cuaca_dunia_1.xml";
-                 respond = cInterface.cekCuacaDunia(url);
-                 System.out.println(respond);
-                 break;
-         case 2: System.out.print("Masukan bilangan: ");
-                 input=inputan();
-                 url="http://data.bmkg.go.id/cuaca_indo_1.xml";
-                 respond = cInterface.cekCuacaIndo(url,input);
-                 System.out.println(respond);
-                 break;
-         case 3: url="http://data.bmkg.go.id/cuaca_jabodetabek_1.xml";
-                 respond = cInterface.cekCuacaJabodetabek(url);
-                 System.out.println(respond);
-                 break;
-         case 4: url="http://data.bmkg.go.id/cuaca_harian_id.xml";
-                 respond = cInterface.cekCuacaHarian(url);
-                 System.out.println(respond);
-                 break;
-         case 5: url="http://data.bmkg.go.id/cuaca_wisata.xml";
-                 respond = cInterface.cekCuacaHarian(url);
-                 System.out.println(respond);
-                 break;
-         default: System.out.println("Harap pilih dengan benar: "); break;
          
-     }
-     }while(pil!=6);
+         do {
+            System.out.println("<<<Menu>>");
+            System.out.println("1. Cek cuaca Dunia");
+            System.out.println("2. Cek cuaca Indonesia");
+            System.out.println("3. Cek cuaca Jabodetabek");
+            System.out.println("4. Cek cuaca Harian");
+            System.out.println("5. Cek cuaca Wisata");
+            System.out.println("6. Exit");
+            System.out.print("Masukan pilihan anda: ");
+            String pilihan = inputan();
+            pil = Integer.parseInt(pilihan);
+    
+            switch(pil){
+                case 1: System.out.print("Pilih Kota: ");
+                        input=inputan();
+                        url="http://data.bmkg.go.id/cuaca_dunia_1.xml";
+                        respond = cInterface.cekCuacaDunia(url,input);
+                        System.out.println(respond);
+                        break;
+                case 2: System.out.print("Pilih Kota: ");
+                        input=inputan();
+                        url="http://data.bmkg.go.id/cuaca_indo_1.xml";
+                        respond = cInterface.cekCuacaIndo(url,input);
+                        System.out.println(respond);
+                        break;
+                case 3: System.out.print("Pilih Daerah: ");
+                        input=inputan();
+                        url="http://data.bmkg.go.id/cuaca_jabodetabek_1.xml";
+                        respond = cInterface.cekCuacaJabodetabek(url,input);
+                        System.out.println(respond);
+                        break;
+                case 4: System.out.print("Pilih Tanggal: ");
+                        input=inputan();
+                        url="http://data.bmkg.go.id/cuaca_harian_id.xml";
+                        respond = cInterface.cekCuacaHarian(url,input);
+                        System.out.println(respond);
+                        break;
+                case 5: System.out.print("Pilih Area: ");
+                        input=inputan();
+                        url="http://data.bmkg.go.id/cuaca_wisata.xml";
+                        respond = cInterface.cekCuacaWisata(url,input);
+                        System.out.println(respond);
+                        break;
+                default: System.out.println("Harap pilih dengan benar: "); break;
+            }
+          } while(pil!=6);
     }
 }
